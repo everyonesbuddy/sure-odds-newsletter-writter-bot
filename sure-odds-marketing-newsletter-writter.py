@@ -3,9 +3,11 @@ import random
 import time
 from datetime import datetime, timedelta
 import os
+from dotenv import load_dotenv
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
+load_dotenv()
 
 # Configs
 SCOPES = ['https://www.googleapis.com/auth/documents']
@@ -115,9 +117,10 @@ def get_featured_matchup_moneyline():
     league_name = leagues[league_key]
     emoji = sport_emojis.get(league_key, "")
 
+    api_key = os.getenv("ODDS_API_KEY")  # Load from .env
     url = (
         f"https://api.the-odds-api.com/v4/sports/{league_key}/odds/"
-        f"?apiKey=402f2e4bba957e5e98c7e1a178393c8c&regions=us&markets=h2h&oddsFormat=american&bookmakers=draftkings"
+        f"?apiKey={api_key}&regions=us&markets=h2h&oddsFormat=american&bookmakers=draftkings"
     )
     res = requests.get(url)
     if res.status_code != 200:
