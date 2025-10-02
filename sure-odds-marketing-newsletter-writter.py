@@ -64,28 +64,28 @@ contests = [
         "url": "https://sure-odds.com/",
         "entry_fee": 0
     },
-    {
-        "title": "Season Long EPL Pick'em",
-        "prize": "$1000 cash prize",
-        "duration": "season-long",
-        "start_date": "2025-08-15 00:00:00",
-        "end_date": "2026-05-24 23:59:59",
-        "contest_format": "pickem",
-        "win_conditions": "Have the most correct picks this EPL season",
-        "url": "https://sure-odds.com/",
-        "entry_fee": 0
-    },
-    {
-        "title": "Monthly Multi Sport Streak",
-        "prize": "$300 Amazon Gift Card",
-        "duration": "monthly",
-        "start_date": start_of_month_str,
-        "end_date": end_of_month_str,
-        "contest_format": "streak",
-        "win_conditions": "Hit 12 correct picks in a row",
-        "url": "https://sure-odds.com/",
-        "entry_fee": 0
-    }
+    # {
+    #     "title": "Season Long EPL Pick'em",
+    #     "prize": "$1000 cash prize",
+    #     "duration": "season-long",
+    #     "start_date": "2025-08-15 00:00:00",
+    #     "end_date": "2026-05-24 23:59:59",
+    #     "contest_format": "pickem",
+    #     "win_conditions": "Have the most correct picks this EPL season",
+    #     "url": "https://sure-odds.com/",
+    #     "entry_fee": 0
+    # },
+    # {
+    #     "title": "Monthly Multi Sport Streak",
+    #     "prize": "$300 Amazon Gift Card",
+    #     "duration": "monthly",
+    #     "start_date": start_of_month_str,
+    #     "end_date": end_of_month_str,
+    #     "contest_format": "streak",
+    #     "win_conditions": "Hit 12 correct picks in a row",
+    #     "url": "https://sure-odds.com/",
+    #     "entry_fee": 0
+    # }
 ]
 
 # === Newsletter Templates ===
@@ -193,15 +193,15 @@ def build_newsletter(subject_line):
     )
 
     # Other contests
-    other_contests_text = ""
-    for contest in contests:
-        if contest["title"] == featured_contest["title"]:
-            continue
-        if contest["entry_fee"] == 0:
-            entry_text = "🆓 FREE entry"
-        else:
-            entry_text = f"💰 Entry Fee: ${contest['entry_fee']:.2f}"
-        other_contests_text += f"- **{contest['title']}** → {entry_text}\n   {contest['win_conditions']}.\n   Prize: {contest['prize']}. Ends {contest['end_date'].split()[0]}.\n\n"
+    # other_contests_text = ""
+    # for contest in contests:
+    #     if contest["title"] == featured_contest["title"]:
+    #         continue
+    #     if contest["entry_fee"] == 0:
+    #         entry_text = "🆓 FREE entry"
+    #     else:
+    #         entry_text = f"💰 Entry Fee: ${contest['entry_fee']:.2f}"
+    #     other_contests_text += f"- **{contest['title']}** → {entry_text}\n   {contest['win_conditions']}.\n   Prize: {contest['prize']}. Ends {contest['end_date'].split()[0]}.\n\n"
 
     # Multiple matchups
     featured_matchups = get_multiple_matchups(limit=3)
@@ -227,11 +227,6 @@ def build_newsletter(subject_line):
 {intro}
 
 🔗 [Enter here →]({featured_contest['url']})
-
----
-
-## 🎮 Other Active Contests
-{other_contests_text.strip()}
 
 ---
 
